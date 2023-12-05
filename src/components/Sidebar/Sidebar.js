@@ -75,7 +75,7 @@ const Sidebar = ({ open, toggleDrawer }) => {
     const logOut = async () => {
         let res = await cerrarSesionCliente()
         if (res) {
-            history.push("/login");
+            history("/login");
         }
     }
 

@@ -1,10 +1,11 @@
 import './style/style.scss';
 import { createTheme, ThemeProvider } from "@mui/material";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route , Navigate} from "react-router-dom";
 import  GuardRoute  from './components/GuardRoute';
 import Tracking from './pages/Tracking/Tracking';
 import Home  from './pages/Home/Home';
 import Login from './pages/Login/Login'
+import MiCuenta from './pages/MiCuenta/MiCuenta';
 import { Provider } from "react-redux";
 import store from "../src/redux/store";
 
@@ -34,7 +35,12 @@ function App() {
               <Routes>
                   <Route path="/tracking" element={<Tracking />} />
                   <Route path="/home" element={<Home />} />
-                  <Route path="/" element={<Login />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/micuenta" element={<MiCuenta />} />
+                  <Route
+                    path="/"
+                    element={<Navigate to="/login" />}
+                  />
               </Routes>
           </BrowserRouter>
           </ThemeProvider>
