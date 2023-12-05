@@ -20,10 +20,7 @@ import { CLIENTE_LOGIN,
 
   // Accions
 	export function clienteLogin(email, password ) {
-        console.log('HOLAAA')
-        console.log('URL = ', config.get("urlAPI"))
     return async (dispatch) => {
-        console.log('URL = ', config.get("urlAPI"))
         let res = await axios.post(`${config.get("urlAPI")}/customer/login`, {email,password})
             .then((response) => {
                 dispatch({ type: CLIENTE_LOGIN, payload: response.data })

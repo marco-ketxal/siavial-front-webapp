@@ -1,0 +1,11 @@
+@import '../../style/style.scss';
+
+
+.loading-container {
+    align-items: center;
+    top: 50% !important;
+    left: 50% !important;
+    position: absolute;
+    transform: translate(-50%, -60%);
+    padding: 30px !important;
+}

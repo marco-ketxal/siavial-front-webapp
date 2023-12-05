@@ -1,0 +1,54 @@
+@import '../../style/style.scss';
+
+.nav-bar {
+    background-color: white!important;
+    .toolbar {
+        padding: 0 4rem;
+        display: flex;
+        background-color: #D78B24;
+        justify-content: space-between;
+        position: relative;
+        .logo {
+            max-height: 3rem;
+            width: auto;
+        }
+        .actions-container {
+            color: black;
+            display: flex;
+            .btn-bell {
+                margin-right: 3rem;
+                .icon-bell {
+                    color: #d8d8d8;
+                }
+            }
+            .text-greet {
+                color: #d8d8d8;
+                font-weight: $semibold;
+                font-size: .7rem;
+            }
+            .text-username {
+                color: $black;
+                font-weight: $bold;
+            }
+            .btn-menu {
+                margin-left: 1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        .toolbar {
+            padding: 0 1rem;
+            .actions-container {
+                .btn-bell {
+                    margin-right: 0;
+                }
+                .btn-menu {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+@import '../../style/style.scss';
+
+.sidebar-container {
+    .sidebar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: .5rem 1rem;
+        .user-container {
+            margin-left: 1rem;
+            .text-greet {
+                color: #d8d8d8;
+                font-weight: $semibold;
+                font-size: .7rem;
+            }
+            .text-username {
+                color: $black;
+                font-weight: $bold;
+            }
+        }
+    }
+    .list-container {
+        .icon {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

@@ -13,7 +13,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility'; 
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-/* import Loading from "../components/Loading/Loading"; */
+import Loading from "../../components/Loading/Loading";
 import { useDispatch } from 'react-redux';
 import  {clienteLogin}  from "../../redux/actions/clienteActions";  
 import { ToastContainer, toast } from 'react-toastify';
@@ -51,7 +51,7 @@ function Login() {
             let res= await Login( values.email , values.password );
             if(res.status === 200){
                 await logIn(values.email, values.password)
-                history("/tracking")
+                history("/home")
             }else{
                 notify(res.data.message);
             }
@@ -186,12 +186,12 @@ function Login() {
                     <Grid container spacing={6} className="mt-2">
                         <Grid  item xs={6} align= 'center' > 
                             <Typography className="texto-small">
-                                Aún no tienes cuenta ? <span> <b onClick={()=>history.push("/registro")}> Regístrate</b></span>
+                                Aún no tienes cuenta ? <span> <b onClick={()=>history("/registro")}> Regístrate</b></span>
                             </Typography>
                         </Grid>
 
                         <Grid  item xs={6} align= 'center' > 
-                            <Typography onClick={()=>history.push("/recoverpassword")} className="texto-small">
+                            <Typography onClick={()=>history("/recoverpassword")} className="texto-small">
                                 Olvide mi contraseña
                             </Typography>
                         </Grid>
@@ -206,9 +206,9 @@ function Login() {
                     autoClose={2500}
                 />
             </Grid>
-            {/* {
+            {
                 showModal && <Loading/>
-            } */}
+            }
         </form>
         </React.Fragment>
     )
