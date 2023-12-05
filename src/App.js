@@ -7,6 +7,7 @@ import Home  from './pages/Home/Home';
 import Login from './pages/Login/Login'
 import MiCuenta from './pages/MiCuenta/MiCuenta';
 import VehiculoSeleccionar from './pages/Vehiculos/VehiculoSeleccionar';
+import Vehiculos from './pages/Vehiculos/Vehiculos';
 import { Provider } from "react-redux";
 import store from "../src/redux/store";
 
@@ -39,6 +40,7 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/micuenta" element={<MiCuenta />} />
                   <Route path="/vehiculoseleccionar" element={<VehiculoSeleccionar />} />
+                  <Route path="/vehiculos" element={<Vehiculos />} />
                   <Route
                     path="/"
                     element={<Navigate to="/login" />}

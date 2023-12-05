@@ -1,11 +1,10 @@
-import {React, Fragment, useEffect } from 'react';
+import {React, Fragment } from 'react';
 import { Grid ,  useMediaQuery , Typography , Container , Button , Avatar} from '@mui/material';
 import Navbar  from "../../components/Navbar/Navbar";
 import {useNavigate , useLocation } from 'react-router-dom';
 import {  useSelector, useDispatch} from 'react-redux';
 import { actualizarIdVehiculo } from '../../redux/actions/solicitudActions';
 import './vehiculo.scss'
-
 
 function VehiculoSeleccionar() {
     let history = useNavigate();
