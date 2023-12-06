@@ -12,8 +12,12 @@ function Vehiculos() {
     const matches = useMediaQuery("(max-width:768px)");
     
     const handleClickServicio = (index) =>{
-        if(location.state === undefined){ //no ha seleccionado un servicio
-            history('/vehiculodetalle',index);
+        if(location.state === undefined || location.state === null){ //no ha seleccionado un servicio
+            history('/vehiculodetalle',{
+                state: {
+                  id: index,
+                }
+              });
         }else{
             history('/ubicacion');
         }
@@ -64,7 +68,7 @@ function Vehiculos() {
                 
                 <Grid  className="mt-3" align= 'center'>
                     <Button 
-                        onClick={()=>history.push('/vehiculoregistrar',location.state)} 
+                        onClick={()=>history('/vehiculoregistrar',{state: location.state})} 
                         variant="contained" 
                         color="primary" 
                         size="large"  
