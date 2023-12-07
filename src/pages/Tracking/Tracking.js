@@ -29,6 +29,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ContactDialog from "../../components/ContactDialog";
 import "./Tracking.scss"
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 let USDollar = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -112,6 +113,7 @@ export default function Tracking() {
   const minRoute = 100;
   const maxRoute = 580;
   const history = useNavigate();
+  const solicitud = useSelector(state => state.Solicitud)
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -120,6 +122,7 @@ export default function Tracking() {
 
 //Iniciar ubicación del cliente 
 useEffect(() => {
+  console.log(' solicitud = ', solicitud)
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
       (position) => {

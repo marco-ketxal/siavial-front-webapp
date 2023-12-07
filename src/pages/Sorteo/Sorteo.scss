@@ -1,0 +1,37 @@
+@import '../../style/style.scss';
+
+.text-title-page{
+	font-size: 18px !important;
+	color: #030104 !important;
+	font-weight: $bold !important; 
+}
+
+.card-proveedor-descripcion{
+	font-size: 12px !important;
+	font-weight: $semibold !important; 
+}
+
+.card-proveedor{
+	height: 120px !important;
+	box-shadow: 1px 1px 5px 0px rgb(226, 226, 226);
+	border-radius: 10px !important;
+}
+
+
+.card-proveedor-gris{
+	font-size: 12px !important;
+	color: #A09F9F !important; 
+	font-weight: $semibold !important; 
+}
+
+.card-avatar {
+	width: 70px !important;
+	height: 70px !important;
+}
+
+
+.card-title{
+	font-size: 22px !important;
+	font-weight: $bold !important; 
+	color: #D78B24 !important;
+}

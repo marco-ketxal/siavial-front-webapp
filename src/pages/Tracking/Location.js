@@ -16,7 +16,9 @@ import TimeToLeaveIcon from '@mui/icons-material/TimeToLeave';
 import Lottie from "react-lottie";
 import animationData from "../../assets/animations/map_loading.json";
 import "./Tracking.scss"
-import { useNavigate   } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
+import { buscarProveedoresDisponibles } from '../../redux/actions/proveedorActions';
+import {  useDispatch , useSelector } from 'react-redux';
 
 const defaultOptions = {
   loop: true,
@@ -63,6 +65,7 @@ const mapStyles = [
 
 
 export default function Location() {
+	const dispatch = useDispatch();
   const [ userLocation, setUserLocation] = useState(null);
   const [ userAdress , setUserAddress ] = useState('');
   const [isShowLocation, setIsShowLocation] = useState(true);
@@ -71,6 +74,8 @@ export default function Location() {
     googleMapsApiKey: process.env.REACT_APP_CUSTOM_VARIABLE,
   });
 	const history = useNavigate();
+	const solicitud = useSelector(state => state.Solicitud)
+	const buscarProveedores = async (estado , servicio) => dispatch(buscarProveedoresDisponibles(estado, servicio))
 
 //Iniciar ubicación del cliente 
 useEffect(() => {
@@ -114,9 +119,10 @@ const onClickMarket = (e) => {
 };
 
 
-const onClickShareLocation =()=>{
+const onClickShareLocation =async()=>{
 	console.log('compartir  ubicación', userLocation);
-	history('/pagoseleccionar')
+	await buscarProveedores("Guanajuato", solicitud.tipoSolicitud);
+	history('/sorteo')
 }
 
 const renderButtons =()=>{

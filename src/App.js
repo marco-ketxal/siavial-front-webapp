@@ -15,6 +15,7 @@ import PagoRegistrar from './pages/Pago/PagoRegistrar';
 import PagoDetalle from './pages/Pago/PagoDetalle';
 import PagoSeleccionar from './pages/Pago/PagoSeleccionar';
 import Location from './pages/Tracking/Location';
+import Sorteo from './pages/Sorteo/Sorteo';
 import { Provider } from "react-redux";
 import store from "../src/redux/store";
 
@@ -55,6 +56,7 @@ function App() {
                   <Route path="/pagodetalle" element={<PagoDetalle />} />
                   <Route path="/pagoseleccionar" element={<PagoSeleccionar />} />
                   <Route path="/location" element={<Location />} />
+                  <Route path="/sorteo" element={<Sorteo />} />
                   <Route
                     path="/"
                     element={<Navigate to="/login" />}
