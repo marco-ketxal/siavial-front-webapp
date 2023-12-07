@@ -1,0 +1,9 @@
+@import '../../style/style.scss';
+
+.loading-container {
+    display: flex;
+    align-items: center;
+    .text {
+        font-weight: $semibold;
+    }
+}

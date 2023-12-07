@@ -50,7 +50,7 @@ const Sidebar = ({ open, toggleDrawer }) => {
             title: "Historial de servicios",
             icon: "fas fa-car-battery",
             iconColor: "primary",
-            onClick: () => history("/historial"),
+            /* onClick: () => history("/historial"), */
         },
         /* {
             title: "Ayuda",

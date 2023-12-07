@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import Lottie from "react-lottie";
 import animationData from "../assets/animations/rating.json";
+import { useNavigate } from 'react-router-dom';
 
 
 const defaultOptions = {
@@ -21,6 +22,7 @@ const defaultOptions = {
 
 export default function ServiceRatingModal({ open, onClose, onSubmit }) {
   const [rating, setRating] = useState(0);
+  const history = useNavigate();
 
   const handleRatingChange = (event, newRating) => {
     setRating(newRating);
@@ -29,6 +31,7 @@ export default function ServiceRatingModal({ open, onClose, onSubmit }) {
   const handleSubmit = () => {
     onSubmit();
     console.log(rating)
+    history('/home', { replace: true });
     onClose();
   };
 

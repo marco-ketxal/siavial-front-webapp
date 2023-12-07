@@ -19,7 +19,7 @@ function Vehiculos() {
                 }
               });
         }else{
-            history('/ubicacion');
+            history('/location');
         }
     }
 

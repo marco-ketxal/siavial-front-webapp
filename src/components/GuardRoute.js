@@ -15,7 +15,6 @@ const GuardRoute = ({ type, ...options }) => {
     const history = useNavigate();
     
     useEffect(() => {
-        console.log('Entro !!')
         firebaseAuth.onAuthStateChanged(userFire => {
             if (userFire) {
                 setCurrentUser(userFire);

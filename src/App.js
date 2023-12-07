@@ -6,10 +6,15 @@ import Tracking from './pages/Tracking/Tracking';
 import Home  from './pages/Home/Home';
 import Login from './pages/Login/Login'
 import MiCuenta from './pages/MiCuenta/MiCuenta';
-import VehiculoSeleccionar from './pages/Vehiculos/VehiculoSeleccionar';
-import Vehiculos from './pages/Vehiculos/Vehiculos';
-import VehiculosDetalle from './pages/Vehiculos/VehiculosDetalle';
-import VehiculoRegistrar from './pages/Vehiculos/VehiculoRegistrar';
+import VehiculoSeleccionar from './pages/Vehiculo/VehiculoSeleccionar';
+import Vehiculos from './pages/Vehiculo/Vehiculos';
+import VehiculosDetalle from './pages/Vehiculo/VehiculosDetalle';
+import VehiculoRegistrar from './pages/Vehiculo/VehiculoRegistrar';
+import Pagos from './pages/Pago/Pagos';
+import PagoRegistrar from './pages/Pago/PagoRegistrar';
+import PagoDetalle from './pages/Pago/PagoDetalle';
+import PagoSeleccionar from './pages/Pago/PagoSeleccionar';
+import Location from './pages/Tracking/Location';
 import { Provider } from "react-redux";
 import store from "../src/redux/store";
 
@@ -37,14 +42,19 @@ function App() {
           <ThemeProvider theme={theme}>
           <BrowserRouter>
               <Routes>
-                  <Route path="/tracking" element={<Tracking />} />
                   <Route path="/home" element={<Home />} />
+                  <Route path="/tracking" element={<Tracking />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/micuenta" element={<MiCuenta />} />
                   <Route path="/vehiculoseleccionar" element={<VehiculoSeleccionar />} />
                   <Route path="/vehiculos" element={<Vehiculos />} />
                   <Route path="/vehiculodetalle" element={<VehiculosDetalle />} />
                   <Route path="/vehiculoregistrar" element={<VehiculoRegistrar />} />
+                  <Route path="/pagos" element={<Pagos />} />
+                  <Route path="/pagoregistrar" element={<PagoRegistrar />} />
+                  <Route path="/pagodetalle" element={<PagoDetalle />} />
+                  <Route path="/pagoseleccionar" element={<PagoSeleccionar />} />
+                  <Route path="/location" element={<Location />} />
                   <Route
                     path="/"
                     element={<Navigate to="/login" />}

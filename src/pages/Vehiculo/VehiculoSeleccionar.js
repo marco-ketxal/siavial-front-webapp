@@ -1,4 +1,4 @@
-import {React, Fragment, useEffect } from 'react';
+import {React, Fragment } from 'react';
 import { Grid ,  useMediaQuery , Typography , Container , Button , Avatar} from '@mui/material';
 import Navbar  from "../../components/Navbar/Navbar";
 import {useNavigate , useLocation } from 'react-router-dom';
@@ -16,7 +16,7 @@ function VehiculoSeleccionar() {
     
     const handleClickServicio = (idVehiculo) =>{
         reduxActualizarVehiculo(idVehiculo)
-        history('/ubicacion');
+        history('/location');
     }
 
     return (
@@ -62,7 +62,7 @@ function VehiculoSeleccionar() {
                     cliente.vehiculos.length === 0 && (
                         <Grid className="mt-3" align= 'center'>
                             <Button 
-                                onClick={()=>history.push('/vehiculoregistrar',location.state)} 
+                                onClick={()=>history('/vehiculoregistrar',location.state)} 
                                 variant="contained" 
                                 color="primary" 
                                 size="large"  

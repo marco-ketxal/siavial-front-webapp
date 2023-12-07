@@ -28,6 +28,7 @@ import animationData from "../../assets/animations/map_loading.json";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ContactDialog from "../../components/ContactDialog";
 import "./Tracking.scss"
+import { useNavigate } from "react-router-dom";
 
 let USDollar = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -110,6 +111,7 @@ export default function Tracking() {
   const durationCounterMinutes = 1;
   const minRoute = 100;
   const maxRoute = 580;
+  const history = useNavigate();
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -141,6 +143,12 @@ useEffect(() => {
     alert('La geolocalización no es compatible en este navegador.')
   }
 },[])
+
+useEffect(()=>{
+  if(userLocation){
+    calculateRoute();
+  }
+},[userLocation])
 
 // Inciar el tiempo de cancelación
 useEffect(() => {
@@ -255,10 +263,11 @@ async function updateRoute(stepIndex) {
 
 function cancelService(){
   setDirections(null)
-  window.location.reload();
+  //window.location.reload();
   setStartService(false);
   setShowNotifyClose(true);
   setTimeLeft(null)
+  history('/home', { replace: true });
 }
 
 function calculateZone(kms){

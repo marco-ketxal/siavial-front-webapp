@@ -30,6 +30,7 @@ function FormDatosPago ({idPago}){
 useEffect(()=>{
 	dbCrearActualizar(cliente);
 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	console.log('idPago = ', idPago)
 },[cliente.idConekta])
 
 useEffect(()=>{
@@ -111,10 +112,10 @@ const handleConfirmarGuardado =async ()=>{
 
 const formik = useFormik({
 	initialValues: {
-		titular: idPago !== undefined ? cliente.metodosPago[idPago].name:'',
-		tarjeta: idPago !== undefined ? cliente.metodosPago[idPago].last4:'',
-		mes: idPago !== undefined ? cliente.metodosPago[idPago].exp_month:'',
-		anio: idPago !== undefined ? cliente.metodosPago[idPago].exp_year:'',
+		titular: idPago !== undefined ? cliente?.metodosPago[idPago]?.name:'',
+		tarjeta: idPago !== undefined ? cliente.metodosPago[idPago]?.last4:'',
+		mes: idPago !== undefined ? cliente.metodosPago[idPago]?.exp_month:'',
+		anio: idPago !== undefined ? cliente.metodosPago[idPago]?.exp_year:'',
 		cvv: '',
 	},
 	onSubmit: async  values => {
@@ -181,7 +182,7 @@ const handleChange = (e) => {
                     <Grid container spacing={3} className="mt-05">
                         <Grid item xs={matches ? 12:6}> 
                             <TextField  
-															disabled = {idPago === undefined ? false : true}
+															disabled = {idPago === null ? false : true}
 															label="Titular de la Tarjeta" 
 															fullWidth={true} 
 															variant="outlined" 
@@ -195,7 +196,7 @@ const handleChange = (e) => {
                         </Grid>
                         <Grid item xs={matches ? 12:6}>
                             <TextField
-															disabled = {idPago === undefined ? false : true}
+															disabled = {idPago === null ? false : true}
 															label="Número de Tarjeta" 
 															fullWidth={true} 
 															variant="outlined"  
@@ -212,7 +213,7 @@ const handleChange = (e) => {
                         </Grid>
                     <Grid item xs={6}>
                         <FormControl 
-													disabled = {idPago === undefined ? false : true}
+													disabled = {idPago === null ? false : true}
 													fullWidth
 													variant="outlined"
 													error={formik.touched.mes && formik.errors.mes ? true : false}
@@ -246,7 +247,7 @@ const handleChange = (e) => {
                     </Grid>
                     <Grid item xs={6} >
                         <FormControl 
-														disabled = {idPago === undefined ? false : true}
+														disabled = {idPago === null ? false : true}
 														fullWidth
 														variant="outlined"
 														error={formik.touched.anio && formik.errors.anio ? true : false}
@@ -278,7 +279,7 @@ const handleChange = (e) => {
 												
                     </Grid>
 										{
-											idPago === undefined  && (	
+											idPago === null  && (	
 												<Grid item xs={matches ? 7:3 }>
 													<Typography  > Código de Seguridad </Typography>
 													<TextField  
@@ -315,7 +316,7 @@ const handleChange = (e) => {
 												type="submit"
                         size="large"  
                         className="btn-rojo"> 
-												{ idPago ===  undefined ? "Guardar":"Eliminar"}
+												{ idPago ===  null ? "Guardar":"Eliminar"}
                     </Button>
                 </Grid>
             </Container>
