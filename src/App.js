@@ -16,6 +16,7 @@ import PagoDetalle from './pages/Pago/PagoDetalle';
 import PagoSeleccionar from './pages/Pago/PagoSeleccionar';
 import Location from './pages/Tracking/Location';
 import Sorteo from './pages/Sorteo/Sorteo';
+import Registro from './pages/Login/Registro';
 import { Provider } from "react-redux";
 import store from "../src/redux/store";
 
@@ -36,12 +37,20 @@ const theme = createTheme({
       }
 });
 
+//Mandate al home si da refresh
+if (window.performance) {
+  if (performance.navigation.type === 1) {
+      window.location.href = "/home"
+  } 
+}
+
 function App() {
   return (
     <div className="App">
         <Provider store={store}>
           <ThemeProvider theme={theme}>
           <BrowserRouter>
+          <GuardRoute>
               <Routes>
                   <Route path="/home" element={<Home />} />
                   <Route path="/tracking" element={<Tracking />} />
@@ -57,11 +66,13 @@ function App() {
                   <Route path="/pagoseleccionar" element={<PagoSeleccionar />} />
                   <Route path="/location" element={<Location />} />
                   <Route path="/sorteo" element={<Sorteo />} />
+                  <Route path="/registro" element={<Registro />} />
                   <Route
                     path="/"
                     element={<Navigate to="/login" />}
                   />
               </Routes>
+            </GuardRoute>
           </BrowserRouter>
           </ThemeProvider>
       </Provider>

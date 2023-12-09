@@ -83,14 +83,14 @@ const formik = useFormik({
 			if(idVehiculo === undefined){
 					dbCrearActualizar(bindNewProperties(values,URLFoto));
 					if(location.state !== undefined){
-						history('/vehiculoseleccionar',location.state);
+						history('/vehiculoseleccionar',{ state: location.state});
 					}else{
 						history('/vehiculos');
 					}
 			}else{
 					dbCrearActualizar(bindUpdateProperties(values, idVehiculo , URLFoto));
 					if(idVehiculo === undefined){
-						history('/vehiculoseleccionar',location.state);
+						history('/vehiculoseleccionar',{ state: location.state});
 					}else{
 						history('/vehiculos');
 					}

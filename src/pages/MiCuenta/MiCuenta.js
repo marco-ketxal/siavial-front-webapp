@@ -9,6 +9,11 @@ function MiCuenta() {
 
     const matches = useMediaQuery("(max-width:768px)");
     const cliente = useSelector(state => state.Cliente)
+
+    useEffect(()=>{
+       console.log(' datos personales =', cliente.datosPersonales) 
+    },[])
+
     
     useEffect(()=>{
         

@@ -12,7 +12,6 @@ import {
     enviarSolicitud,  */
     crearOrdenConekta ,
     emailEnviarPago} from '../../redux/actions/solicitudActions'
-import { History } from '@mui/icons-material';
 
 function PagoSeleccionar() {
 
@@ -150,7 +149,7 @@ function PagoSeleccionar() {
                     cliente.metodosPago.length === 0 && (
                         <Grid className="mt-3" align= 'center'>
                             <Button 
-                                onClick={()=>History('/pagoregistrar',location.state)} 
+                                onClick={()=>history('/pagoregistrar',{state: location.state})} 
                                 variant="contained" 
                                 color="primary" 
                                 size="large"  

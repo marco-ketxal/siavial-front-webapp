@@ -30,7 +30,6 @@ function FormDatosPago ({idPago}){
 useEffect(()=>{
 	dbCrearActualizar(cliente);
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	console.log('idPago = ', idPago)
 },[cliente.idConekta])
 
 useEffect(()=>{
@@ -51,7 +50,9 @@ const handleClose =()=>{
 
 
 const creaActualizaClienteConekta=async(token)=>{
-	let clienteConekta={
+	try {
+
+		let clienteConekta={
 			name:`${cliente.datosPersonales.nombre} ${cliente.datosPersonales.apellidoPaterno} ${cliente.datosPersonales.apellidoMaterno}`,
 			email: cliente.email,
 			phone: cliente.celular,
@@ -61,10 +62,12 @@ const creaActualizaClienteConekta=async(token)=>{
 			}]
 	}
 	if(cliente.idConekta==='' || cliente.idConekta===undefined){
+		console.log('Entro a crear cliente en conekta')
 		//Crear cliente en conekta
 		await conektaCrearCliente(clienteConekta);
 	}else{
 		// Agregar nuevo Método de Pago
+		console.log('Entro a Agregar nuevo Método de Pago')
 		const objPayment={
 			idCustomer:cliente.idConekta,
 			payment:{
@@ -72,9 +75,15 @@ const creaActualizaClienteConekta=async(token)=>{
 				token_id: conektaUtil.tokenCard,
 			}
 		}
+		console.log('Actualizar cliente = ', cliente)
 		await dbCrearActualizar(cliente);
 		await conektaAgregarFormaPago(objPayment)
 	}
+		
+	} catch (error) {
+		console.log('Error en creaActualizaClienteConekta ', error)
+	}
+	
 }
 
 const generarTokenTarjeta=async(values)=>{
@@ -89,8 +98,7 @@ const generarTokenTarjeta=async(values)=>{
 				"type":"card"
 			}
 		}
-		await conektaUtil.tokenizerCard(cardData)
-	
+		conektaUtil.tokenizerCard(cardData)
 	}catch(error){
 		console.log("Error al generar token de tarjeta ", error)
 		return '';
@@ -100,9 +108,11 @@ const generarTokenTarjeta=async(values)=>{
 const handleConfirmarGuardado =async ()=>{
 	if(conektaUtil.tokenCard !== ''){
 		await creaActualizaClienteConekta(conektaUtil.tokenCard);
-		if(location.state !== undefined){ 
-			history('/pagoseleccionar',location.state);
+		if(location.state !== null){ 
+			console.log(' ENTRO A pagoseleccionar')
+			history('/pagoseleccionar',{state: location.state});
 		}else{
+			console.log(' ENTRO A pagos')
 			history('/pagos');
 		}
 	}else{
@@ -112,14 +122,14 @@ const handleConfirmarGuardado =async ()=>{
 
 const formik = useFormik({
 	initialValues: {
-		titular: idPago !== undefined ? cliente?.metodosPago[idPago]?.name:'',
-		tarjeta: idPago !== undefined ? cliente.metodosPago[idPago]?.last4:'',
-		mes: idPago !== undefined ? cliente.metodosPago[idPago]?.exp_month:'',
-		anio: idPago !== undefined ? cliente.metodosPago[idPago]?.exp_year:'',
+		titular: idPago !== null ? cliente?.metodosPago[idPago]?.name:'',
+		tarjeta: idPago !== null ? cliente.metodosPago[idPago]?.last4:'',
+		mes: idPago !== null ? cliente.metodosPago[idPago]?.exp_month:'',
+		anio: idPago !== null ? cliente.metodosPago[idPago]?.exp_year:'',
 		cvv: '',
 	},
 	onSubmit: async  values => {
-			if(idPago === undefined){
+			if(idPago === null){
 					await generarTokenTarjeta(values);
 					setOpenModalGuardar(true);
 			}else{
@@ -129,7 +139,7 @@ const formik = useFormik({
 	validationSchema,
 	validate: values => {
 
-		if(idPago === undefined){
+		if(idPago === null){
 				let errors = {}
 				if(!values.tarjeta) {
 					errors.tarjeta = "Requerido"
@@ -158,7 +168,7 @@ const handleEliminarPago = () =>{
 	let newCliente = {...cliente};
 	let pagoConekta={
 		idCustomer: newCliente.idConekta,
-		idPayment : newCliente.metodosPago[idPago].id
+		idPayment : newCliente?.metodosPago[idPago]?.id
 	}
 	conektaEliminarFormaPago(pagoConekta);
 	newCliente.metodosPago.splice(idPago,1);
@@ -262,8 +272,6 @@ const handleChange = (e) => {
 																onChange={(e)=>handleChange(e)}
 																onBlur={formik.handleBlur}
 														>
-                                <MenuItem value="22">2022</MenuItem>
-                                <MenuItem value="23">2023</MenuItem>
                                 <MenuItem value="24">2024</MenuItem>
                                 <MenuItem value="25">2025</MenuItem>
                                 <MenuItem value="26">2026</MenuItem>

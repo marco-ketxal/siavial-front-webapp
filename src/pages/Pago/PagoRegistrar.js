@@ -1,4 +1,4 @@
-import {React, Fragment} from 'react';
+import {React, Fragment, useEffect} from 'react';
 import { Grid , IconButton , Icon} from '@mui/material';
 import Navbar  from "../../components/Navbar/Navbar";
 import FormDatosPago from '../../components/Formularios/FormDatosPago';
@@ -10,8 +10,9 @@ function PagoRegistrar() {
     let history = useNavigate();
     const location = useLocation();
 
+
     const handleBack =()=>{
-        if(location.state !== null){  //id de servicios
+        if(location.state !== undefined){  //id de servicios
             history('/pagoseleccionar', {state: location.state});
         }else{  
             history('/pagos');

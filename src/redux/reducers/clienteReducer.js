@@ -96,7 +96,7 @@ export  default function dataCliente(state=initCliente, action){
 			return {
 				...state,
 				idConekta: action.payload.idCustomer,
-				metodosPago: action.payload.payment_sources.data
+				metodosPago: action.payload.payment_sources?.data
 			}
 		case CLIENTE_CONEKTA_ELIMINAR_FORMA_PAGO:
 			return state;

@@ -8,12 +8,26 @@ import { obtenerClienteIdFirebase } from "../redux/actions/clienteActions";
 
 const firebaseAuth = firebaseApp.auth();
 
-const GuardRoute = ({ type, ...options }) => {
+const GuardRoute = ({ children }) => {
 
     const [currentUser, setCurrentUser] = useState(null);
     const dispatch = useDispatch()
     const history = useNavigate();
-    
+    const obtenerClienteXIdFirebase = (id) => dispatch(obtenerClienteIdFirebase(id));
+
+    useEffect(() => {
+        firebaseAuth.onAuthStateChanged(userFire => {
+            console.log('userFire =' , userFire);
+            if (userFire) {
+                console.log(userFire);
+                setCurrentUser(userFire);
+                obtenerClienteXIdFirebase(userFire.uid);
+            } else {
+                setCurrentUser(false);
+            }
+        });
+    }, []);
+    /*
     useEffect(() => {
         firebaseAuth.onAuthStateChanged(userFire => {
             if (userFire) {
@@ -23,25 +37,14 @@ const GuardRoute = ({ type, ...options }) => {
                 setCurrentUser(false);
             }
         });
-    }, []);
+    }, []);*/
 
-    const obtenerClienteXIdFirebase = (id) => dispatch(obtenerClienteIdFirebase(id));
+    if (currentUser === false) {
+        console.log(' currentUser = ', currentUser)
+    }  
     
-    if (type === "private" && currentUser === false) {
-        history("/")
-    } else if (type === "public" && currentUser) {
-        history("/")
-    }
-    
-    return <Route {...options}/>
+    return children
 };
 
-GuardRoute.propTypes = {
-    type: PropTypes.oneOf(["public", "private"]),
-};
-
-GuardRoute.defaultProps = {
-    type: "private",
-};
 
 export default GuardRoute;

@@ -62,7 +62,7 @@ function VehiculoSeleccionar() {
                     cliente.vehiculos.length === 0 && (
                         <Grid className="mt-3" align= 'center'>
                             <Button 
-                                onClick={()=>history('/vehiculoregistrar',location.state)} 
+                                onClick={()=>history('/vehiculoregistrar',{ state: location.state})} 
                                 variant="contained" 
                                 color="primary" 
                                 size="large"  
