@@ -1,5 +1,5 @@
-import React , { useState  }from "react";
-import {  Grid , TextField , useMediaQuery , Button , Avatar , Typography } from "@mui/material";
+import React , { useEffect, useState  }from "react";
+import {  FormControl , Grid , TextField , useMediaQuery , Button , Avatar , Typography , Select, MenuItem, InputLabel} from "@mui/material";
 import './Formularios.scss';
 import ModalSubirImagen from "../Modal/SubirImagen/ModalSubirImagen";
 import * as Yup from 'yup';
@@ -21,12 +21,26 @@ function FormDatosAuto ({idVehiculo}){
 	const reduxActualizarVehiculos = (vehiculos) => dispatch(actualizarVehiculos(vehiculos))
 	const guardarFoto = (data) => dispatch(guardarFotoVehiculo(data))
 	const cliente = useSelector(state => state.Cliente)
+	const catalogoCar = useSelector(state=> state.CatalogoAuto)
 	const dbCrearActualizar = (data ) => dispatch(actualizarCliente(data))
 	const [openModal , setOpenModal] = useState(false);
 	const [fotoVehiculo , setFotoVehiculo] = useState('');
 	const [showLoading , setShowLoading] = useState(false);
+	const [brands , setBrands ]=useState(null);
 
- 
+	useEffect(()=>{
+
+		const transformBrans = catalogoCar.map((item)=>{
+			return({
+				id: item.id,
+				brand: item.brand
+			})
+		})
+
+		setBrands(transformBrans)
+	},[])
+
+
 	async function onReceiveFile(file) {
 		setFotoVehiculo(file);
 		setImageModal(false);
@@ -162,7 +176,9 @@ const bindNewProperties = (vehiculo , URLFoto) => {
 						<Typography>Foto vehículo</Typography>
 					</Grid>
 					<Grid item xs={matches ? 12:6}>
-						<TextField
+						<FormControl fullWidth>
+						<InputLabel id="demo-simple-select-label">Marca</InputLabel>
+						<Select
 									name="marca" 
 									label="Marca" 
 									variant="outlined" 
@@ -172,7 +188,18 @@ const bindNewProperties = (vehiculo , URLFoto) => {
 									onChange={formik.handleChange} 
 									onBlur={formik.handleBlur}
 									helperText={formik.touched.marca && formik.errors.marca ? formik.errors.marca : ''}
-						/>
+						>
+							{
+								brands && (
+									brands.map((brand)=>{
+										return(
+										<MenuItem value={brand.id}>{brand.brand}</MenuItem>
+										)
+									})
+								)
+							}
+						</Select>
+						</FormControl>
 					</Grid>
 					<Grid item xs={matches ? 12:6}>
 						<TextField
