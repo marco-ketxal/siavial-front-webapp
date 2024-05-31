@@ -27,6 +27,7 @@ function FormDatosAuto ({idVehiculo}){
 	const [fotoVehiculo , setFotoVehiculo] = useState('');
 	const [showLoading , setShowLoading] = useState(false);
 	const [brands , setBrands ]=useState(null);
+	const [models,setModels]=useState(null);
 
 	useEffect(()=>{
 
@@ -37,8 +38,19 @@ function FormDatosAuto ({idVehiculo}){
 			})
 		})
 
+		const transformModels = catalogoCar.map(({models:{id,description}})=>{
+			return({
+				id: id,
+				name: description
+			})
+
+		})
+
 		setBrands(transformBrans)
+		setModels(transformModels)
 	},[])
+
+	
 
 
 	async function onReceiveFile(file) {
@@ -202,7 +214,9 @@ const bindNewProperties = (vehiculo , URLFoto) => {
 						</FormControl>
 					</Grid>
 					<Grid item xs={matches ? 12:6}>
-						<TextField
+						<FormControl fullWidth>
+						<InputLabel id="demo-simple-select-label2">Modelo</InputLabel>
+						<Select
 									name="modelo" 
 									label="Tipo" 
 									variant="outlined" 
@@ -212,7 +226,18 @@ const bindNewProperties = (vehiculo , URLFoto) => {
 									onChange={formik.handleChange} 
 									onBlur={formik.handleBlur}
 									helperText={formik.touched.modelo && formik.errors.modelo ? formik.errors.modelo : ''}
-						/>
+						>
+							{
+								models && (
+									models.map((models)=>{
+										return(
+										<MenuItem value={models.id}>{models.name}</MenuItem>
+										)
+									})
+								)
+							}
+							</Select>
+						</FormControl>
 					</Grid>
 					<Grid item xs={6}>
 						<TextField
