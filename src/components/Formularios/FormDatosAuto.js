@@ -37,17 +37,12 @@ function FormDatosAuto ({idVehiculo}){
 				brand: item.brand
 			})
 		})
-
-		const transformModels = catalogoCar.map(({models:{id,description}})=>{
-			return({
-				id: id,
-				name: description
-			})
-
-		})
+		if(idVehiculo){
+			const selectedBrand = catalogoCar.find((item)=> item.brand === cliente.vehiculos[idVehiculo].marca)
+			setModels(selectedBrand.models)
+		}
 
 		setBrands(transformBrans)
-		setModels(transformModels)
 	},[])
 
 	
@@ -137,7 +132,6 @@ const handleEliminarVehiculo = () =>{
 }
 
 const bindUpdateProperties = (data, id , URLFoto) => {
-
 		let newCliente = {...cliente};
 		newCliente.vehiculos[id].marca=data.marca;
 		newCliente.vehiculos[id].modelo=data.modelo;
@@ -174,6 +168,12 @@ const bindNewProperties = (vehiculo , URLFoto) => {
 		return  newCliente;
 }
 
+const onChangeBrand=(event)=>{
+	formik.values.marca = event.target.value;
+	const selectedBrand = catalogoCar.find((item)=> item.brand === event.target.value)
+	setModels(selectedBrand.models)
+}
+
 
 	return (
 		<React.Fragment>
@@ -197,7 +197,8 @@ const bindNewProperties = (vehiculo , URLFoto) => {
 									fullWidth
 									value={formik.values.marca}
 									error={formik.touched.marca && formik.errors.marca ? true : false} 
-									onChange={formik.handleChange} 
+									// onChange={formik.handleChange} 
+									onChange={onChangeBrand}
 									onBlur={formik.handleBlur}
 									helperText={formik.touched.marca && formik.errors.marca ? formik.errors.marca : ''}
 						>
@@ -205,7 +206,7 @@ const bindNewProperties = (vehiculo , URLFoto) => {
 								brands && (
 									brands.map((brand)=>{
 										return(
-										<MenuItem value={brand.id}>{brand.brand}</MenuItem>
+										<MenuItem value={brand.brand}>{brand.brand}</MenuItem>
 										)
 									})
 								)
@@ -231,7 +232,7 @@ const bindNewProperties = (vehiculo , URLFoto) => {
 								models && (
 									models.map((models)=>{
 										return(
-										<MenuItem value={models.id}>{models.name}</MenuItem>
+										<MenuItem value={models.description}>{models.description}</MenuItem>
 										)
 									})
 								)
