@@ -10,6 +10,13 @@ import {
 } from '@mui/material';
 import Lottie from "react-lottie";
 import animationData from "../assets/animations/contact.json";
+import {
+  CloseButton,
+  CloseIcon,
+} from "./Modal/SubirImagen/ModalSubirImagen.styles";
+
+
+const phoneNumber = '3328303109';
 
 const defaultOptions = {
   loop: true,
@@ -31,9 +38,16 @@ export default function ContactDialog({show, handle}) {
     handle(false);
   };
 
-  const handleConfirm = () => {
-    setOpen(false);
+  const handleWhatsapp = () => {
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent('Hola , necesito información de mi servicio')}`;
+    window.open(url, '_blank');
   };
+
+  const handleCall = () => {
+    // Redirige a la URL con el esquema tel:
+    window.location.href = `tel:${phoneNumber}`;
+  };
+
 
   return (
     <div>
@@ -45,7 +59,13 @@ export default function ContactDialog({show, handle}) {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle align='center' style={{color: '#cb5303'}}>{"Contactar a operador"}</DialogTitle>
+      
+        <Grid align='right'>
+            <CloseButton onClick={handleClose}>
+                <CloseIcon className="fas fa-times" />
+            </CloseButton>
+        </Grid>
+        <DialogTitle align='center' style={{color: '#cb5303'}}>{"Atención a Clientes"}</DialogTitle>
         <DialogContent>
         <Lottie
             options={defaultOptions}
@@ -54,12 +74,12 @@ export default function ContactDialog({show, handle}) {
           /> 
         </DialogContent>
         <DialogActions>
-          <Grid container spacing={6}>
+          <Grid container spacing={2}>
             <Grid item  xs={6} >
-              <Button  variant="contained" onClick={handleConfirm}>CONTACTAR</Button>
+              <Button  variant="contained" onClick={handleCall}>LLAMAR</Button>
             </Grid>
             <Grid item  xs={6} >
-              <Button onClick={handleClose} variant="outlined" >CANCELAR</Button>
+              <Button onClick={handleWhatsapp} variant="outlined" > WHATSAPP</Button>
             </Grid>
           </Grid>
         </DialogActions>
