@@ -24,11 +24,7 @@ function VehiculoRegistrar() {
     }
 
     const handleBack =()=>{
-        if(location.state !== undefined){  //id de servicios
-            history('/vehiculoseleccionar', {state:location.state});
-        }else{  
             history('/vehiculos');
-        }
     }
 
     return (

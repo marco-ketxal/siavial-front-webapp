@@ -12,11 +12,7 @@ function PagoRegistrar() {
 
 
     const handleBack =()=>{
-        if(location.state !== undefined){  //id de servicios
-            history('/pagoseleccionar', {state: location.state});
-        }else{  
             history('/pagos');
-        }
     }
 
     return (
