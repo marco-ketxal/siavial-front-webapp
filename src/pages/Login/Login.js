@@ -1,4 +1,4 @@
-import React , { useEffect, useState } from 'react';
+import React , { useEffect, useState, useRef } from 'react';
 import {  Typography , 
     Grid, 
     TextField , 
@@ -30,9 +30,10 @@ function Login() {
     const [showPassword, setShowPassword] = useState(false);
     const [showModal , setShowModal] = useState(false);
     const dispatch = useDispatch()
-    const Login = (email,password) => dispatch(clienteLogin(email,password))
+    const Login = async (email,password) => dispatch(clienteLogin(email,password))
     const notify = (error) => toast.error(error);
     const notifySuccess = (message) => toast.success(message);
+    const hasNotified = useRef(false);
  
 
     const validationSchema = Yup.object({
@@ -58,27 +59,25 @@ function Login() {
             setShowModal(false);
         },
         validationSchema,
-        validate: values => {
-
-        }
     })
 
 
     useEffect(()=>{
-        console.log("location=" ,location.state?.origin)
-        switch(location.state?.origin)
-        {
-            case 'signin':
-                notifySuccess("Usuario registrado correctamente")
-                break;
-            case 'recoverpassword':
-                notifySuccess('Revisa tu correo para recupear tu contraseña');
-                break;
-            default:
-                break;
+        if (!hasNotified.current && location.state?.origin) {
+            hasNotified.current = true;
+            switch(location.state.origin) {
+                case 'signin':
+                    notifySuccess("Usuario registrado correctamente");
+                    break;
+                case 'recoverpassword':
+                    notifySuccess('Revisa tu correo para recuperar tu contraseña');
+                    break;
+                default:
+                    break;
+            }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    },[location.state?.origin])
 
     
 
