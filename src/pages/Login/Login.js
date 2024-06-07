@@ -63,8 +63,10 @@ function Login() {
         }
     })
 
+
     useEffect(()=>{
-        switch(location.state)
+        console.log("location=" ,location.state?.origin)
+        switch(location.state?.origin)
         {
             case 'signin':
                 notifySuccess("Usuario registrado correctamente")

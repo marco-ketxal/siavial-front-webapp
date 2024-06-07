@@ -19,6 +19,7 @@ import Sorteo from './pages/Sorteo/Sorteo';
 import Registro from './pages/Login/Registro';
 import { Provider } from "react-redux";
 import store from "../src/redux/store";
+import RecoverPassword from './pages/Login/RecoverPassword';
 
 
 
@@ -55,6 +56,7 @@ function App() {
                   <Route path="/home" element={<Home />} />
                   <Route path="/tracking" element={<Tracking />} />
                   <Route path="/login" element={<Login />} />
+                  <Route path="/recoverpassword" element={<RecoverPassword/>} />
                   <Route path="/micuenta" element={<MiCuenta />} />
                   <Route path="/vehiculoseleccionar" element={<VehiculoSeleccionar />} />
                   <Route path="/vehiculos" element={<Vehiculos />} />

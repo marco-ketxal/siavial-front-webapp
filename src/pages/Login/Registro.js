@@ -25,7 +25,7 @@ function Registro() {
     const [showConfirm, setShowConfirm] = useState(false);
     const [showModal , setShowModal] = useState(false);
     const dispatch = useDispatch()
-    const SignIn = (email,password) => dispatch(clienteRegistro(email,password))
+    const SignIn = async (email,password) => dispatch(clienteRegistro(email,password))
     const notify = (error) => toast.error(error);
     let history = useNavigate();
     const matches = useMediaQuery("(max-width:768px)");
@@ -91,7 +91,7 @@ function Registro() {
                     </Grid>
                 </Grid>
                 <Grid  align= 'left' className="mt-1"> 
-                    <IconButton onClick={()=>history.push("/landign")}>
+                    <IconButton onClick={()=>history("/login")}>
                         <Icon color="primary" className="fas fa-chevron-left icon-arrow"/>
                     </IconButton>
                 </Grid>
