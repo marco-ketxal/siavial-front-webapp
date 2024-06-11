@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { firebaseApp } from "../services/firebase";
 import { useDispatch } from 'react-redux';
 import { obtenerClienteIdFirebase } from "../redux/actions/clienteActions";  
+import { useNavigate } from "react-router-dom";
+
 
 const firebaseAuth = firebaseApp.auth();
 
 const GuardRoute = ({ children }) => {
 
+    let history = useNavigate();
     const [currentUser, setCurrentUser] = useState(null);
     const dispatch = useDispatch()
     const obtenerClienteXIdFirebase = (id) => dispatch(obtenerClienteIdFirebase(id));
@@ -14,29 +17,15 @@ const GuardRoute = ({ children }) => {
     useEffect(() => {
         firebaseAuth.onAuthStateChanged(userFire => {
             if (userFire) {
-                console.log(userFire);
                 setCurrentUser(userFire);
                 obtenerClienteXIdFirebase(userFire.uid);
+                history("/home")
             } else {
                 setCurrentUser(false);
+                history("/login")
             }
         });
     }, []);
-    /*
-    useEffect(() => {
-        firebaseAuth.onAuthStateChanged(userFire => {
-            if (userFire) {
-                setCurrentUser(userFire);
-                obtenerClienteXIdFirebase(userFire.uid);
-            } else {
-                setCurrentUser(false);
-            }
-        });
-    }, []);*/
-
-    if (currentUser === false) {
-        console.log(' currentUser = ', currentUser)
-    }  
     
     return children
 };
