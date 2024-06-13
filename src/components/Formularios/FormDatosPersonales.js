@@ -80,9 +80,9 @@ function FormDatosPersonales (){
 			nombre: Yup.string().required('Requerido')
 			.matches(/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-\/.]+$/, 'Por favor ingresa un nombre válido'),
 			paterno: Yup.string().required('Requerido')
-			.matches(/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-\/.]+$/, 'Por favor ingresa un caracteres válidos'),
+			.matches(/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-\/.]+$/, 'Por favor ingresa solo caracteres válidos'),
 			materno: Yup.string().required('Requerido')
-			.matches(/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-\/.]+$/, 'Por favor ingresa un caracteres válidos'),
+			.matches(/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-\/.]+$/, 'Por favor ingresa solo caracteres válidos'),
 			genero: Yup.string().required('Requerido'),
 			rfc: Yup.string().required('Requerido'),
 			date: Yup.date().nullable(),
