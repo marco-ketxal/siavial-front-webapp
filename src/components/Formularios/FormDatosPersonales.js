@@ -77,9 +77,12 @@ function FormDatosPersonales (){
 	}
 
 	const validationSchema = Yup.object({
-			nombre: Yup.string().required('Requerido'),
-			paterno: Yup.string().required('Requerido'),
-			materno: Yup.string().required('Requerido'),
+			nombre: Yup.string().required('Requerido')
+			.matches(/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-\/.]+$/, 'Por favor ingresa un nombre válido'),
+			paterno: Yup.string().required('Requerido')
+			.matches(/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-\/.]+$/, 'Por favor ingresa un caracteres válidos'),
+			materno: Yup.string().required('Requerido')
+			.matches(/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-\/.]+$/, 'Por favor ingresa un caracteres válidos'),
 			genero: Yup.string().required('Requerido'),
 			rfc: Yup.string().required('Requerido'),
 			date: Yup.date().nullable(),

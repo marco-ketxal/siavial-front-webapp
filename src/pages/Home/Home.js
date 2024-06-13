@@ -58,18 +58,18 @@ function Home() {
             titulo:"Reparación de llanta",
             subtitulo: "Te quedaste sin gasolina?"
         },
-        {
+        /*{
             id:7,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/taller2.png",
             clave: "TR",
             titulo:"Servicio de taller",
             subtitulo: "Te quedaste sin gasolina?"
-        },
+        },*/
         {
             id:8,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/gestoria.jpg",
             clave: "GS",
-            titulo:"Gestoría de siniestros",
+            titulo:"Ajustador de siniestros",
             subtitulo: "Te quedaste sin gasolina?"
         },
     ];

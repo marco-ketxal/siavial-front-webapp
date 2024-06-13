@@ -81,9 +81,9 @@ const validationSchema = Yup.object({
 		marca: Yup.string().required('Requerido'),
 		modelo: Yup.string().required('Requerido'),
 		version: Yup.string().required('Requerido'),
-		anio: Yup.string().required('Requerido'),
+		anio: Yup.string().required('Requerido').min(4,'Mínimo 4 caracteres').max(4,'Máximo 4 caracteres'),
 		color: Yup.string().required('Requerido'),
-		placa: Yup.string().required('Requerido'),
+		placa: Yup.string().required('Requerido').min(6, 'Mínimo 6 caracteres').max(7,'Máximo 7 caracteres'),
 })
 
 const formik = useFormik({
@@ -258,6 +258,7 @@ const onChangeBrand=(event)=>{
 									name="anio" 
 									label="Modelo(Año)" 
 									variant="outlined" 
+									type={"number"}
 									fullWidth
 									value={formik.values.anio}
 									error={formik.touched.anio && formik.errors.anio ? true : false} 
