@@ -86,7 +86,7 @@ function RecoverPassword({callback}) {
                         </IconButton>
                     </Grid>
                     <Grid align= 'center'  className="mt-2"> 
-                        <Typography className="texto-titulo-large">
+                        <Typography className="texto-titulo-small" style={{color:'white'}}>
                             <b>Recuperación de Contraseña</b>
                         </Typography>
                     </Grid>

@@ -37,7 +37,11 @@ const ModalSubirImagen = ({ openModal, handleClose, callback}) =>{
         isDragReject,
         open,
     } = useDropzone({
-        accept: "image/* ,.pdf,.docxm,",
+        accept: {
+            'image/*': ['.jpeg', '.jpg', '.png'],
+            'application/pdf':['.pdf'],
+            'application/vnd.openxmlformats-':['.docx'],
+           },   
         noClick: true,
         noKeyboard: true,
         multiple: false,
