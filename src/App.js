@@ -20,8 +20,7 @@ import Registro from './pages/Login/Registro';
 import { Provider } from "react-redux";
 import store from "../src/redux/store";
 import RecoverPassword from './pages/Login/RecoverPassword';
-
-
+import  Diagnostico  from './pages/Diagnostico/Diagnostico';
 
 const theme = createTheme({
   palette: {
@@ -69,6 +68,7 @@ function App() {
                   <Route path="/location" element={<Location />} />
                   <Route path="/sorteo" element={<Sorteo />} />
                   <Route path="/registro" element={<Registro />} />
+                  <Route path="/diagnostico" element={<Diagnostico />} />
                   <Route
                     path="/"
                     element={<Navigate to="/login" />}
