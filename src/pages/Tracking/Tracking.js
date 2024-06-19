@@ -363,7 +363,7 @@ const renderUIFooter =()=>{
                 <Grid container >
                   <Grid item xs={12}> <HomeRepairServiceIcon fontSize="large" color="primary"/></Grid>
                   <Grid item xs={12}><Typography variant="caption">Servicio</Typography></Grid>
-                  <Grid item xs={12}><Typography><b>GASOLINA</b></Typography></Grid>
+                  <Grid item xs={12}><Typography><b>{solicitud.tipoSolicitud}</b></Typography></Grid>
                 </Grid>
               </Grid>
               <Grid item xs={3}>
@@ -471,7 +471,7 @@ const renderMarkers = () => {
       key="origin"
       position={directions.routes[0].legs[0].start_location}
       icon={{
-        url:'https://icons.iconarchive.com/icons/elegantthemes/beautiful-flat/256/Gas-icon.png',
+        url:solicitud.iconoServicio,
         scaledSize: new window.google.maps.Size(50, 50),
       }}
     />,

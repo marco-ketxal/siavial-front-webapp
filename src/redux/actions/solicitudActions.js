@@ -22,10 +22,10 @@ import {
             payload: idCliente
         }
     }
-	export function actualizarTipoServicio(tipoServicio , claveSolicitud) {
+	export function actualizarTipoServicio(tipoServicio , claveSolicitud,iconoServicio) {
         return {
             type: SOLICITUD_ACTUALIZAR_TIPOSERVICIO,
-            payload: {tipoServicio, claveSolicitud}
+            payload: {tipoServicio, claveSolicitud,iconoServicio}
         }
     }
 

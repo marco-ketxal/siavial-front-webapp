@@ -19,6 +19,7 @@ const initialState = {
   estatus: '',
   tipoSolicitud: '',
 	claveSolicitud: '',
+	iconoServicio: '',
   comentarios: '',
 	monto:0,
 	recorrido:{
@@ -46,6 +47,7 @@ export  default function datosSolicitud(state=initialState, action){
 						...state,
 						tipoSolicitud: action.payload.tipoServicio,
 						claveSolicitud: action.payload.claveSolicitud,
+						iconoServicio: action.payload.iconoServicio,
 					}
 			case SOLICITUD_ACTUALIZAR_ID_VEHICULO: 
 					return {

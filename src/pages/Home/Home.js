@@ -12,7 +12,7 @@ function Home() {
     let history = useNavigate();
     const cliente = useSelector(state => state.Cliente)
     const dispatch = useDispatch();
-    const reduxActualizarTipoServicio = (servicio , clave) => dispatch(actualizarTipoServicio(servicio, clave))
+    const reduxActualizarTipoServicio = (servicio , clave, iconoServicio) => dispatch(actualizarTipoServicio(servicio, clave, iconoServicio))
     const reduxActualiarIdCliente = (idCliente)=> dispatch(actualizarIdCliente(idCliente))
 
     const data = [
@@ -21,42 +21,48 @@ function Home() {
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/grua.jpg",
             clave: "GR",
             titulo:"Grúa",
-            subtitulo: "Traslado de autos y camiones"
+            subtitulo: "Traslado de autos y camiones",
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/4526/4526296.png?semt=ais_hybrid"
         },
         {
             id:2,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/corriente.jpg",
             clave: "CR",
             titulo:"Paso de corriente",
-            subtitulo: "Olvidaste apagar las luces de tu carro ?"
+            subtitulo: "Olvidaste apagar las luces de tu carro ?",
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/4772/4772152.png?semt=ais_hybrid"
         },
         {
             id:3,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/gasolina.jpg",
             clave: "GS",
             titulo:"Gasolina",
-            subtitulo: "Te quedaste sin gasolina?"
+            subtitulo: "Te quedaste sin gasolina?",
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/9310/9310698.png?semt=ais_hybrid"
         },
         {
             id:4,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/cerrajero.jpg",
             clave: "CJ",
             titulo:"Cerrajero",
-            subtitulo: "Te quedaste sin gasolina?"
+            subtitulo: "Te quedaste sin gasolina?",
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/4658/4658478.png?semt=ais_hybrid"
         },
         {
             id:5,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/cambio-llanta.jpg",
             clave: "CL",
             titulo:"Cambio de llanta",
-            subtitulo: "Te quedaste sin gasolina?"
+            subtitulo: "Te quedaste sin gasolina?",
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/4658/4658478.png?semt=ais_hybrid"
         },
         {
             id:6,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/reparacion.jpg",
             clave: "RL",
             titulo:"Reparación de llanta",
-            subtitulo: "Te quedaste sin gasolina?"
+            subtitulo: "Te quedaste sin gasolina?",
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/1680/1680168.png?semt=ais_hybrid"
         },
         /*{
             id:7,
@@ -64,18 +70,20 @@ function Home() {
             clave: "TR",
             titulo:"Servicio de taller",
             subtitulo: "Te quedaste sin gasolina?"
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/1680/1680168.png?semt=ais_hybrid"
         },*/
         {
             id:8,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/gestoria.jpg",
             clave: "GS",
             titulo:"Ajustador de siniestros",
-            subtitulo: "Te quedaste sin gasolina?"
+            subtitulo: "Te quedaste sin gasolina?",
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/1680/1680168.png?semt=ais_hybrid"
         },
     ];
 
     const handleClickSerivicio = (servicio) =>{
-        reduxActualizarTipoServicio(servicio.titulo , servicio.clave);
+        reduxActualizarTipoServicio(servicio.titulo , servicio.clave, servicio.iconoServicio);
         reduxActualiarIdCliente(cliente.id);
         history('/vehiculoseleccionar')
         
