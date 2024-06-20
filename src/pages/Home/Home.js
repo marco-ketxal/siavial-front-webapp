@@ -22,7 +22,7 @@ function Home() {
             clave: "GR",
             titulo:"Grúa",
             subtitulo: "Traslado de autos y camiones",
-            iconoServicio: "https://cdn-icons-png.freepik.com/256/4526/4526296.png?semt=ais_hybrid"
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/8692/8692509.png?uid=R10899661&ga=GA1.1.1781262551.1708610409&semt=ais_hybrid"
         },
         {
             id:2,
@@ -30,7 +30,7 @@ function Home() {
             clave: "CR",
             titulo:"Paso de corriente",
             subtitulo: "Olvidaste apagar las luces de tu carro ?",
-            iconoServicio: "https://cdn-icons-png.freepik.com/256/4772/4772152.png?semt=ais_hybrid"
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/16264/16264331.png?uid=R10899661&ga=GA1.1.1781262551.1708610409"
         },
         {
             id:3,
@@ -38,38 +38,38 @@ function Home() {
             clave: "GS",
             titulo:"Gasolina",
             subtitulo: "Te quedaste sin gasolina?",
-            iconoServicio: "https://cdn-icons-png.freepik.com/256/9310/9310698.png?semt=ais_hybrid"
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/9212/9212565.png?uid=R10899661&ga=GA1.1.1781262551.1708610409&semt=ais_hybrid"
         },
         {
             id:4,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/cerrajero.jpg",
             clave: "CJ",
             titulo:"Cerrajero",
-            subtitulo: "Te quedaste sin gasolina?",
-            iconoServicio: "https://cdn-icons-png.freepik.com/256/4658/4658478.png?semt=ais_hybrid"
+            subtitulo: "",
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/8875/8875017.png?uid=R10899661&ga=GA1.1.1781262551.1708610409&semt=ais_hybrid"
         },
         {
             id:5,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/cambio-llanta.jpg",
             clave: "CL",
             titulo:"Cambio de llanta",
-            subtitulo: "Te quedaste sin gasolina?",
-            iconoServicio: "https://cdn-icons-png.freepik.com/256/4658/4658478.png?semt=ais_hybrid"
+            subtitulo: "",
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/9212/9212488.png?uid=R10899661&ga=GA1.1.1781262551.1708610409&semt=ais_hybrid"
         },
         {
             id:6,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/reparacion.jpg",
             clave: "RL",
             titulo:"Reparación de llanta",
-            subtitulo: "Te quedaste sin gasolina?",
-            iconoServicio: "https://cdn-icons-png.freepik.com/256/1680/1680168.png?semt=ais_hybrid"
+            subtitulo: "",
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/9212/9212488.png?uid=R10899661&ga=GA1.1.1781262551.1708610409&semt=ais_hybrid"
         },
         /*{
             id:7,
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/taller2.png",
             clave: "TR",
             titulo:"Servicio de taller",
-            subtitulo: "Te quedaste sin gasolina?"
+            subtitulo: ""
             iconoServicio: "https://cdn-icons-png.freepik.com/256/1680/1680168.png?semt=ais_hybrid"
         },*/
         {
@@ -77,8 +77,8 @@ function Home() {
             urlImagen: "https://assets-siavial.s3.amazonaws.com/webapp/gestoria.jpg",
             clave: "GS",
             titulo:"Ajustador de siniestros",
-            subtitulo: "Te quedaste sin gasolina?",
-            iconoServicio: "https://cdn-icons-png.freepik.com/256/1680/1680168.png?semt=ais_hybrid"
+            subtitulo: "",
+            iconoServicio: "https://cdn-icons-png.freepik.com/256/7449/7449075.png?uid=R10899661&ga=GA1.1.1781262551.1708610409&semt=ais_hybrid"
         },
     ];
 
