@@ -14,7 +14,7 @@ import animationData from "../assets/animations/rating.json";
 import { useNavigate } from 'react-router-dom';
 
 const phoneNumber = '3328303109';
-
+const urlEncuesta = 'https://forms.office.com/pages/responsepage.aspx?id=JC5A3gk6VkeiP3Gb4iDnGRZyfKXEjCZDkWGOMLJxcpxUOEhCT1lBTFRMUzBUUkdXWldRVlZVRFlSQS4u'
 
 
 const defaultOptions = {
@@ -34,7 +34,7 @@ export default function ServiceRatingModal({ open, onClose, onSubmit }) {
 
   const handleSubmit = () => {
     onSubmit();
-    console.log(rating)
+    window.open(urlEncuesta, '_blank');
     history('/home', { replace: true });
     onClose();
   };

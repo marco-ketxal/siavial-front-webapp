@@ -1,4 +1,4 @@
-import {React, Fragment, useEffect } from 'react';
+import {React, Fragment } from 'react';
 import { Grid , Typography , Container  , Icon, useMediaQuery , Avatar, Box} from '@mui/material';
 import Navbar  from "../../components/Navbar/Navbar";
 import {useNavigate } from 'react-router-dom';
@@ -7,8 +7,7 @@ import {actualizarProveedorSeleccionado} from '../../redux/actions/solicitudActi
 import './Sorteo.scss';
 
 function Sorteo() {
-    const proveedores = useSelector(state => state.Proveedor)
-    console.log(' proveedores = ' , proveedores)
+    const proveedores = useSelector(state => state.Proveedor.data)
     const solicitud = useSelector(state => state.Solicitud)
     const matches = useMediaQuery("(max-width:768px)");
     let history = useNavigate();
