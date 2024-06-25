@@ -31,6 +31,12 @@ import "./Tracking.scss"
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
+
+
 let USDollar = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -351,12 +357,18 @@ const onClickUIfooter =()=>{
 const renderUIFooter =()=>{
   if(endService) return null;
       return (
-        <Box className="ui-info"
-            onClick={onClickUIfooter}
-            sx={{
-              bottom:  showInfo ? '0px':'-100px' ,
-            }}
-          >
+        <Box className="ui-info" onClick={onClickUIfooter}
+        sx={{  
+          bottom:  showInfo ? '0px':'-150px' ,
+        }}>
+              <Accordion defaultExpanded className="accordion" onClick={onClickUIfooter}>
+                      <AccordionSummary
+                      expandIcon={<ExpandLessRoundedIcon fontSize="large" color="primary"/>}
+                      aria-controls="panel1-content"
+                      id="panel1-footer"
+                    >
+                    </AccordionSummary>
+                    <AccordionDetails>
             {showInfo && (
               <Grid container spacing={1} >
               <Grid item xs={3}>
@@ -390,6 +402,8 @@ const renderUIFooter =()=>{
               </Grid>
             ) 
           }
+          </AccordionDetails>
+          </Accordion>
         </Box>
       )
 }
@@ -401,22 +415,22 @@ const onClickCallOperator =()=>{
 const renderUIHeader =()=>{
   if(endService) return null;
       return (
-        <Box className="ui-info-header">
+        <Box className="ui-info-header" >
           {
               startService ? (
-              <Grid>
+              <Grid >
                 <Typography variant="subtitle2" align="center">Información del operador</Typography>
                 <Grid container spacing={2}  >
                   <Grid item xs={2}>
                         <Avatar alt="Avatar" 
-                            src="https://docs-proveedores.s3.amazonaws.com/62c0fc659aac316042473f61/foto-perfil.png" 
+                            src={solicitud.fotoProveedor} 
                             className="ui-avatar-provider"
                         />
                   </Grid>
                   <Grid item xs={8} >
                     <Grid container > 
-                      <Grid item xs={12}><Typography variant="label"><b>GRUAS GAITAN</b></Typography></Grid>
-                      <Grid item xs={12}><Typography  variant="caption" >Operador: Marco Antonio  Ornelas</Typography></Grid>
+                      <Grid item xs={12}><Typography variant="label"><b>{solicitud.nombreProveedor} </b></Typography></Grid>
+                      <Grid item xs={12}><Typography  variant="caption">Nombre del Operador: </Typography></Grid>
                       <Grid item xs={12}> <Rating
                         size="small"
                         value={4} readOnly

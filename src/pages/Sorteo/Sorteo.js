@@ -12,10 +12,12 @@ function Sorteo() {
     const matches = useMediaQuery("(max-width:768px)");
     let history = useNavigate();
     let dispatch = useDispatch();
-    const reduxActualizarSolicitud = (idProveedor) => dispatch(actualizarProveedorSeleccionado(idProveedor))
+    const reduxActualizarSolicitud = (idProveedor, foto, nombre) => dispatch(actualizarProveedorSeleccionado(idProveedor,foto,nombre))
     const handleClickServicio= (proveedorSeleccionado) =>{
         let infoSeleccionado={
             id:proveedorSeleccionado._id,
+            foto: proveedorSeleccionado.foto,
+            nombre: proveedorSeleccionado.nombre,
             monto: parseInt(proveedorSeleccionado.amount, 10),
             tiempoEstimado: proveedorSeleccionado.time
         }

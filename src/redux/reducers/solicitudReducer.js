@@ -16,11 +16,11 @@ import {
 const initialState = {
 	id:'',
 	folio:'',
-  estatus: '',
-  tipoSolicitud: '',
+  	estatus: '',
+  	tipoSolicitud: '',
 	claveSolicitud: '',
 	iconoServicio: '',
-  comentarios: '',
+  	comentarios: '',
 	monto:0,
 	recorrido:{
 		direccionInicio:'',
@@ -32,7 +32,7 @@ const initialState = {
 	},
 	idCliente:'',
 	idVehiculo:'',
-	idProveedor:'' 
+	idProveedor:''
 }
 
 export  default function datosSolicitud(state=initialState, action){
@@ -58,6 +58,8 @@ export  default function datosSolicitud(state=initialState, action){
 				return {
 					...state,
 					idProveedor: action.payload.id,
+					fotoProveedor: action.payload.foto,
+					nombreProveedor: action.payload.nombre,
 					monto: parseInt(action.payload.monto, 10),
 					recorrido:{
 						...state.recorrido,
