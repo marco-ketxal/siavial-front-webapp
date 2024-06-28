@@ -153,7 +153,8 @@ const bindNewProperties = (vehiculo , URLFoto) => {
 			anio: '',
 			color: '',
 			placa: '',
-			foto: ''
+			foto: '',
+			fecha_creacion: ''
 		}
 		let vehiculoNuevo = autoTemplate;
 		vehiculoNuevo.marca = vehiculo.marca;
@@ -163,6 +164,7 @@ const bindNewProperties = (vehiculo , URLFoto) => {
 		vehiculoNuevo.color = vehiculo.color;
 		vehiculoNuevo.placa = vehiculo.placa;
 		vehiculoNuevo.foto = URLFoto;
+		vehiculoNuevo.fecha_creacion = new Date().toLocaleString();
 		newCliente.vehiculos.push(vehiculoNuevo);
 		reduxActualizarVehiculos(newCliente.vehiculos); 
 		return  newCliente;
