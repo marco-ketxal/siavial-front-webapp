@@ -11,7 +11,7 @@ function MiCuenta() {
     const cliente = useSelector(state => state.Cliente)
 
     useEffect(()=>{
-       console.log(' datos personales =', cliente.datosPersonales) 
+       //console.log(' datos personales =', cliente.datosPersonales) 
     },[])
 
     

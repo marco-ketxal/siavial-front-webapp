@@ -20,6 +20,8 @@ import Registro from './pages/Login/Registro';
 import { Provider } from "react-redux";
 import store from "../src/redux/store";
 import RecoverPassword from './pages/Login/RecoverPassword';
+import PagoCorrecto from './pages/Pago/PagoCorrecto';
+import PagoError from './pages/Pago/PagoError';
 
 
 
@@ -66,6 +68,8 @@ function App() {
                   <Route path="/pagoregistrar" element={<PagoRegistrar />} />
                   <Route path="/pagodetalle" element={<PagoDetalle />} />
                   <Route path="/pagoseleccionar" element={<PagoSeleccionar />} />
+                  <Route path="/pagocorrecto" element={<PagoCorrecto/>}/>
+                  <Route path="/pagoerror" element={<PagoError/>}/>
                   <Route path="/location" element={<Location />} />
                   <Route path="/sorteo" element={<Sorteo />} />
                   <Route path="/registro" element={<Registro />} />

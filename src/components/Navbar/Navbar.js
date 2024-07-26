@@ -8,6 +8,7 @@ import {
     useMediaQuery,
     Grid,
     Typography,
+    Card,
 } from "@mui/material";
 import Sidebar from '../Sidebar/Sidebar';
 import {  useSelector} from 'react-redux';
@@ -29,11 +30,13 @@ const Navbar = () => {
 
             <AppBar position="static" className="nav-bar" elevation={0}>
                 <Toolbar className="toolbar">
+                    <a href="/home">
                     <img
                         src="https://assets-siavial.s3.amazonaws.com/general/logo.png"
                         alt=""
                         className="logo"
                     />
+                    </a>
                     SIAVIAL
                     <div className="actions-container">
                         {!matches ? (

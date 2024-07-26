@@ -20,7 +20,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
-import ExploreIcon from '@mui/icons-material/Explore';
+import NumbersIcon from '@mui/icons-material/Numbers';
+import InfoIcon from '@mui/icons-material/Info';
+import PinIcon from '@mui/icons-material/Pin';
 import MapIcon from '@mui/icons-material/Map';
 import TimeToLeaveIcon from '@mui/icons-material/TimeToLeave';
 import Lottie from "react-lottie";
@@ -35,6 +37,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
+import { id } from "date-fns/locale";
 
 
 let USDollar = new Intl.NumberFormat('en-US', {
@@ -128,7 +131,7 @@ export default function Tracking() {
 
 //Iniciar ubicación del cliente 
 useEffect(() => {
-  console.log(' solicitud = ', solicitud)
+  //console.log(' solicitud = ', solicitud)
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -380,9 +383,9 @@ const renderUIFooter =()=>{
               </Grid>
               <Grid item xs={3}>
                 <Grid container >
-                  <Grid item xs={12}> <ExploreIcon fontSize="large" color="primary"/></Grid>
-                  <Grid item xs={12}><Typography variant="caption">Zona</Typography></Grid>
-                  <Grid item xs={12}><Typography><b>{zone}</b></Typography></Grid>
+                  <Grid item xs={12}> <NumbersIcon fontSize="large" color="primary"/></Grid>
+                  <Grid item xs={12}><Typography variant="caption">No. Servicio</Typography></Grid>
+                  <Grid item xs={12}><Typography><b>{solicitud.folio}</b></Typography></Grid>
                 </Grid>
               </Grid>
               <Grid item xs={3}>

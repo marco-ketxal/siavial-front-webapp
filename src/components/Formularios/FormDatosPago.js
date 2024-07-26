@@ -62,12 +62,12 @@ const creaActualizaClienteConekta=async(token)=>{
 			}]
 	}
 	if(cliente.idConekta==='' || cliente.idConekta===undefined){
-		console.log('Entro a crear cliente en conekta')
+		//console.log('Entro a crear cliente en conekta')
 		//Crear cliente en conekta
 		await conektaCrearCliente(clienteConekta);
 	}else{
 		// Agregar nuevo Método de Pago
-		console.log('Entro a Agregar nuevo Método de Pago')
+		//console.log('Entro a Agregar nuevo Método de Pago')
 		const objPayment={
 			idCustomer:cliente.idConekta,
 			payment:{
@@ -75,7 +75,7 @@ const creaActualizaClienteConekta=async(token)=>{
 				token_id: conektaUtil.tokenCard,
 			}
 		}
-		console.log('Actualizar cliente = ', cliente)
+		//console.log('Actualizar cliente = ', cliente)
 		await dbCrearActualizar(cliente);
 		await conektaAgregarFormaPago(objPayment)
 	}
@@ -109,10 +109,10 @@ const handleConfirmarGuardado =async ()=>{
 	if(conektaUtil.tokenCard !== ''){
 		await creaActualizaClienteConekta(conektaUtil.tokenCard);
 		if(location.state !== null){ 
-			console.log(' ENTRO A pagoseleccionar')
+			//console.log(' ENTRO A pagoseleccionar')
 			history('/pagoseleccionar',{state: location.state});
 		}else{
-			console.log(' ENTRO A pagos')
+			//console.log(' ENTRO A pagos')
 			history('/pagos');
 		}
 	}else{

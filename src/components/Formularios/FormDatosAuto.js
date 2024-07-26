@@ -7,7 +7,7 @@ import { useFormik } from 'formik';
 import {useNavigate , useLocation} from 'react-router-dom';
 import { useDispatch , useSelector} from 'react-redux';
 import { actualizarVehiculos , actualizarCliente , guardarFotoVehiculo} from '../../redux/actions/clienteActions';
-import ModalDecision from '../Modal/ModalDecision'
+import ModalDelete from '../Modal/ModalDelete'
 import Loading from "../Loading/Loading";
 import car from "../../assets/images/icon-car.png";
 
@@ -333,11 +333,11 @@ const onChangeBrand=(event)=>{
 			/>
 			{
 				openModal && (
-					<ModalDecision 
+					<ModalDelete 
 						openModal={openModal} 
 						setOpenModal={setOpenModal}
 						funcionDecision={handleEliminarVehiculo}
-						title={"Mensaje de conirmación"}
+						title={"Mensaje de confirmación"}
 						message={"Seguro que desea eliminar el vehículo ?"}
 				/>
 				)

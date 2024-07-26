@@ -120,7 +120,7 @@ const onClickMarket = (e) => {
 
 
 const onClickShareLocation =async()=>{
-	console.log('compartir  ubicación', userLocation);
+	//console.log('compartir  ubicación', userLocation);
 	await buscarProveedores("Guanajuato", solicitud.tipoSolicitud);
 	history('/sorteo')
 }

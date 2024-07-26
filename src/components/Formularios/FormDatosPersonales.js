@@ -66,7 +66,7 @@ function FormDatosPersonales (){
 						month: date?.$d.getMonth()+1,
 						year: date?.$d.getFullYear()
 					});
-					console.log(' getFullYear = ', date?.$d.getFullYear() )
+					//console.log(' getFullYear = ', date?.$d.getFullYear() )
 				formik.setFieldValue("rfc", rfc)
 				} 
 	}
@@ -76,13 +76,15 @@ function FormDatosPersonales (){
 		formik.setFieldValue(name, value)
 	}
 
+	const symbols =/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-.]+$/
+
 	const validationSchema = Yup.object({
 			nombre: Yup.string().required('Requerido')
-			.matches(/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-.]+$/, 'Por favor ingresa un nombre válido'),
+			.matches(symbols, 'Por favor ingresa un nombre válido'),
 			paterno: Yup.string().required('Requerido')
-			.matches(/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-.]+$/, 'Por favor ingresa solo caracteres válidos'),
+			.matches(symbols, 'Por favor ingresa solo letras'),
 			materno: Yup.string().required('Requerido')
-			.matches(/^[a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ\s\-.]+$/, 'Por favor ingresa solo caracteres válidos'),
+			.matches(symbols, 'Por favor ingresa solo letras'),
 			genero: Yup.string().required('Requerido'),
 			rfc: Yup.string().required('Requerido'),
 			date: Yup.date().nullable(),
@@ -108,13 +110,12 @@ function FormDatosPersonales (){
 					//Actualizar Redux
 					reduxActualizarDatosPersonales(values);
 					//Actualizar en Base de datos 
-					console.log('values = ', values )
 					let res= await dbCrearActualizar(bindNewProperties(values));
 					if(res.status === 200){
 							history('/home');
 					}
 					else{
-							console.log(" res = ", res);
+							//console.log(" res = ", res);
 					}
 		},
 		validationSchema,
@@ -258,7 +259,8 @@ function FormDatosPersonales (){
 						/>
 					</Grid>
 					<Grid item xs={matches ? 12:6}>
-						<TextField
+						<TextField disabled
+								color="primary"
 								name="rfc" 
 								label="RFC" 
 								variant="outlined" 
