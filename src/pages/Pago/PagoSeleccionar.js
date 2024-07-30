@@ -25,6 +25,7 @@ function PagoSeleccionar() {
     const [openModal, setOpenModal] = useState(false);
     const [openModalError, setOpenModalError] = useState(false);
     const [indexPaymentSelected, setIndexPaymentSelected] = useState(0);
+    const [selectedCard, setSelectedCard] =useState(null); 
     const dispatch = useDispatch();
     const reduxActualizarMetodoPago = (idMetodoPago) => dispatch(actualizarIdMetodoPago(idMetodoPago))
     const reduxActualizarEstatus = (estatus) => dispatch(actualizarEstatus(estatus))
@@ -37,8 +38,8 @@ function PagoSeleccionar() {
         setOpen(false);
     }
 
-    const handlePagar = (idMetodoPago, index) => {
-        setIndexPaymentSelected(index)
+    const handlePagar = (idMetodoPago) => {
+        
         reduxActualizarMetodoPago(idMetodoPago);
         reduxActualizarEstatus('En Proceso');
         setOpenModal(true);
@@ -115,6 +116,10 @@ function PagoSeleccionar() {
         sendPaymentEmail(data)
     }
 
+
+
+
+
     return (
         <Fragment>
             <Navbar />
@@ -133,7 +138,10 @@ function PagoSeleccionar() {
                                 align='center'
                                 key={index}
                                 className="card-pago mt-2 mb-2"
-                                onClick={() => { handlePagar(pago.id, index) }}
+                                onClick={()=>{
+                                    setIndexPaymentSelected(index)
+                                    setSelectedCard(pago)}}
+                                
                             >
                                 <Grid container align='center'  >
                                     <Grid item xs={2} >
@@ -171,7 +179,9 @@ function PagoSeleccionar() {
 							size="large"  
 							type="submit"
 							className="btn-rojo"
-                            onClick={() => history('/pagocorrecto', { state: location.state })}> 
+                            onClick={() => { handlePagar(selectedCard.id) }}
+                            //onClick={() => history('/pagocorrecto', { state: location.state })}
+                            > 
 								Pagar 
 					</Button><br/><br/>                    
                     <Button 
