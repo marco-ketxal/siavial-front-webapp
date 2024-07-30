@@ -20,8 +20,8 @@ function PagoCorrecto() {
                         </Typography><br />
                         <CardMedia
                             component="img"
-                            height="200"
-                            image=""
+                            sx={{ width: 160 }}
+                            image="https://assets-siavial-admin.s3.amazonaws.com/pagado.png"
                         />
                         <CardContent>
                             <Typography variant="body3" color="text.secondary" >
