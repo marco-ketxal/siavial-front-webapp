@@ -1,11 +1,21 @@
 import { React, Fragment } from 'react';
-import { Grid, Container, Button, Card, CardHeader, CardMedia, CardContent, CardActions, Typography } from '@mui/material';
+import { Grid, 
+    Container, 
+    Button, 
+    Card, 
+    CardHeader, 
+    CardMedia, 
+    CardContent, 
+    CardActions, 
+    Typography } from '@mui/material';
 import Navbar from "../../components/Navbar/Navbar";
 import { useSelector } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function PagoCorrecto() {
 
     const solicitud = useSelector(state => state.Solicitud)
+    let history = useNavigate();
 
     return (
         <Fragment>
@@ -42,7 +52,8 @@ function PagoCorrecto() {
                         color="primary"
                         size="large"
                         type="submit"
-                        className="btn-rojo">
+                        className="btn-rojo"
+                        onClick={() => history('/tracking')}>
                         Ver mi Servicio
                     </Button>
                 </Container>

@@ -98,7 +98,8 @@ function PagoSeleccionar() {
             })
             history('/tracking');
         } */
-        history('/tracking');
+       //Definir cuando es correcto o
+        history('/pagocorrecto');
     }
 
     const sendEmailPayment = async (paid, folio) => {
@@ -137,7 +138,7 @@ function PagoSeleccionar() {
                                 item xs={matches ? 12 : 4}
                                 align='center'
                                 key={index}
-                                className="card-pago mt-2 mb-2"
+                                className={`card-pago mt-2 mb-2 ${index === indexPaymentSelected ? 'card-pago-selected' : ''}`}
                                 onClick={()=>{
                                     setIndexPaymentSelected(index)
                                     setSelectedCard(pago)}}

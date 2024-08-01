@@ -1,5 +1,13 @@
 import { React, Fragment } from 'react';
-import { Grid, Container, Button, Card, CardHeader, CardMedia, CardContent, CardActions, Typography } from '@mui/material';
+import { Grid, 
+    Container, 
+    Button, 
+    Card, 
+    CardHeader, 
+    CardMedia, 
+    CardContent, 
+    CardActions, 
+    Typography } from '@mui/material';
 import Navbar from "../../components/Navbar/Navbar";
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -42,7 +50,7 @@ function PagoError() {
                         size="large"
                         type="submit"
                         className="btn-rojo"
-                        onClick={() => history('/home', { state: location.state })}> 
+                        onClick={() => history('/home')}> 
                         Regresar
                     </Button>
                 </Container>
